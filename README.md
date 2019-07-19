@@ -19,6 +19,7 @@ If you want to load the pretrained Embedding weights into your project. Follow t
 python export_weights.py
 ```
 it will export the pretrained weight as "pretrained_weights.pickle" in the results folder.
+
 2. Load the pretrained weights
 
 ```python
@@ -48,7 +49,7 @@ python preprocess.py
 #### Train:
 To train the model, run the following script.
 Default configuration for training,
-- sp = 1 (skip-gram)
+- sg = 1 (skip-gram. For training with CBOW, make it 0)
 - window = 4
 - size = 300 (vector dimension)
 - min_count = 2
@@ -66,6 +67,6 @@ To Evaluate, run this script.
 ```python
 python eval.py
 ```
-Note: In terminal, Bangla words can't display properly. So, It is better to evaluate in the jupyter notebook. if you don't have jupyter, inatall anaconda and than run "jupyter notebook" in the terminal.
+Note: In terminal, Bangla words can't display properly. So, It is better to evaluate in the jupyter notebook. if you don't have jupyter, install anaconda python properly and run "jupyter notebook" in the terminal.
  
 
