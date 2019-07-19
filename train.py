@@ -32,7 +32,7 @@ with open("data/bn_corpus.pickle", "rb") as f:
 
 os.makedirs("", exist_ok=True)  
 
-# Call back funtion for savin the model after every epoch 
+# Call back funtion for saving the model after every epoch 
 class EpochSaver(CallbackAny2Vec):
     '''Callback to save model after each epoch.'''
 
@@ -60,16 +60,17 @@ def Train(checkpoint=True):
 	'''
 
     if checkpoint:
-		model = Word2Vec(data, sg=sg, window=window,size=size,
+        model = Word2Vec(data, sg=sg, window=window,size=size,
 			min_count=min_count, workers=workers, iter=iters, sample=sample,
 			callbacks=[EpochSaver("./checkpoints")])
-		model.save("./results/word2vec_new.model")
-		print(f"Training Completed. File saved as \" word2vec_new \" in the results folder ")
-	else:
-		model = Word2Vec(data, sg=sg, window=window,size=size,
+        model.save("./results/word2vec_new.model")
+        print(f"Training Completed. File saved as \" word2vec_new \" in the results folder ")
+        
+    else:
+        model = Word2Vec(data, sg=sg, window=window,size=size,
 			min_count=min_count, workers=workers, iter=iters, sample=sample)
-		model.save("./results/word2vec_new.model")
-		print(f"Training Completed. File saved as \" word2vec_new \" in the results folder ")
+        model.save("./results/word2vec_new.model")
+        print(f"Training Completed. File saved as \" word2vec_new \" in the results folder ")
         
 if __name__ == '__main__':       
     Train(checkpoint)       
