@@ -10,7 +10,7 @@ def export_weight():
     '''
     Model wight will be saved in results folder
     '''
-    model_path = "results/word2vec_new.model"
+    model_path = "results/word2vec.model"
     model = Word2Vec.load(model_path)
     with open("results/pretrained_weights.pickle", "wb") as file:
         pickle.dump(model.wv.syn0,file)

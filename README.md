@@ -61,7 +61,7 @@ Default configuration for training,
 - workers = 8
 - iter    = 100
 - sample  = 0.01
-- callbacks = True (if you don't want to save model after every iteration than make it False) 
+- callbacks = True (if you don't want to save the model after every iteration than make it False) 
 - save = 'results/' (automatic create this folder if it doesn't exist)
 
 ```python
@@ -72,6 +72,12 @@ To Evaluate, run this script.
 ```python
 python eval.py
 ```
-Note: In terminal, Bangla words can't display properly. So, It is better to evaluate in the jupyter notebook. if you don't have jupyter, install anaconda python properly and run "jupyter notebook" in the terminal.
- 
+Note: In terminal, Bangla words can't be displayed properly. So, It is better to evaluate them in the jupyter notebook. if you don't have jupyter, install anaconda python properly and run "jupyter notebook" in the terminal.
+
+
+
+#### Feel free to create an issue if you (the reader) come across any problems. 
+
+
+
 
