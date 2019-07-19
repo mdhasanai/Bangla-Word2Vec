@@ -1,5 +1,10 @@
 ## Bangla-Word2Vec
 
+What is Word2vec?
+
+Word2vec is a method to efficiently create word embeddings. Word2vec model is basically a two-layer neural network that processes text. The use of word2vec is huge in deep learning such as Machine translations, Language modelling, Question and Answering, Image Captioning, Speech Recognition and so on. You can use this bangla word2vec model in your projects for getting better result. The procedure is given below to load this pretained weight into the project.
+
+
 ### Requirements
 - Python 3.5 or later
 - Gensim
@@ -26,7 +31,7 @@ it will export the pretrained weight as "pretrained_weights.pickle" in the resul
 import pickle
 import torch.nn 
 
-embedding = nn.Embedding(num_embeddings, embedding_dim=300 )
+embedding = nn.Embedding(num_embeddings, embedding_dim=300)
 with open("results/pretrained_weights.pickle","rb") as f:
     weight = pickle.load(f)
 weight = torch.from_numpy(weight)
