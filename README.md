@@ -28,7 +28,7 @@ copy the text file into the "data/" folder
 To preprocess, run the following file
 ```python
 python preprocess.py
-``
+```
 
 
 #### Train:
