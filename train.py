@@ -15,7 +15,7 @@ from gensim.models.callbacks import CallbackAny2Vec
 '''
 Configuaration for the trainig
 '''
-c = 1 # if you want to train with CBOW, make it 0
+sg = 1 # if you want to train with CBOW, make it 0
 window = 4
 size = 300
 min_count = 2
@@ -23,14 +23,12 @@ workers = 8
 iters = 100
 sample = 0.01
 
-checkpoint = True
+checkpoint = False
 
 os.makedirs("results", exist_ok=True)
 
-with open("data/bn_corpus.pickle", "rb") as f:
-    data = pickle.load(f)
 
-os.makedirs("", exist_ok=True)  
+#os.makedirs("", exist_ok=True)  
 
 # Call back funtion for saving the model after every epoch 
 class EpochSaver(CallbackAny2Vec):
@@ -54,20 +52,26 @@ class EpochSaver(CallbackAny2Vec):
         
 # Traning start from here       
 def Train(checkpoint=True):
-	'''
-	Default checkpoint is true.
-	Model will be save after every epoch
-	'''
+    '''
+    Default checkpoint is true.
+    Model will be save after every epoch
+    '''
+    with open("data/bn_corpus.pickle", "rb") as f:
+        data = pickle.load(f)
+    train_data = [txt.split(" ") for txt in data]
 
+    del data
+    
+    
     if checkpoint:
-        model = Word2Vec(data, sg=sg, window=window,size=size,
+        model = Word2Vec(train_data, sg=sg, window=window,size=size,
 			min_count=min_count, workers=workers, iter=iters, sample=sample,
 			callbacks=[EpochSaver("./checkpoints")])
         model.save("./results/word2vec_new.model")
         print(f"Training Completed. File saved as \" word2vec_new \" in the results folder ")
         
     else:
-        model = Word2Vec(data, sg=sg, window=window,size=size,
+        model = Word2Vec(train_data, sg=sg, window=window,size=size,
 			min_count=min_count, workers=workers, iter=iters, sample=sample)
         model.save("./results/word2vec_new.model")
         print(f"Training Completed. File saved as \" word2vec_new \" in the results folder ")
