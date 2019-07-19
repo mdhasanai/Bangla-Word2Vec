@@ -5,9 +5,9 @@
 - Gensim
 
 Install requirements packages by the following command
-```
+```python
 pip install -r requirments.txt
-``` 
+```
 
 
 #### Load Pretrained Bangla Word Embedding in Pytorch
@@ -16,7 +16,21 @@ If you want to load the pretrained Embedding weights into your project. Follow t
 1. Run the following script to export the pretrained weights
 
 ```python
-export_weights.py
+python export_weights.py
+```
+it will export the pretrained weight as "pretrained_weights.pickle" in the results folder.
+2. Load the pretrained weights
+
+```python
+import pickle
+import torch.nn 
+
+embedding = nn.Embedding(num_embeddings, embedding_dim=300 )
+with open("results/pretrained_weights.pickle","rb") as f:
+    weight = pickle.load(f)
+weight = torch.from_numpy(weight)
+embedding.weight = nn.Parameter(weight)
+
 ```
 
 
@@ -25,7 +39,7 @@ export_weights.py
 copy the text file into the "data/" folder
 
 #### Preprocess:
-To preprocess, run the following file
+To preprocess, run the following script
 ```python
 python preprocess.py
 ```
@@ -41,8 +55,8 @@ Default configuration for training,
 - workers = 8
 - iter    = 100
 - sample  = 0.01
-- callbacks = True (if you fon't want to save model after every iteration than make it False) 
-- save = 'word2vec/' (automatic create this folder if it doesn't exist)
+- callbacks = True (if you don't want to save model after every iteration than make it False) 
+- save = 'results/' (automatic create this folder if it doesn't exist)
 
 ```python
 python train.py
