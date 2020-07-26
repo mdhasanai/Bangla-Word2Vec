@@ -6,7 +6,7 @@ Word2vec is a method to efficiently create word embeddings. Word2vec model is ba
 
 
 ### Requirements
-- Python 3.5 or later
+- Python > 3.5
 - Gensim
 
 Install requirements packages by the following command
